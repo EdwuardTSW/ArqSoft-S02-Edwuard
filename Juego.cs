@@ -47,7 +47,7 @@ namespace Ahorcado
 
                 if (string.IsNullOrWhiteSpace(entrada))
                 {
-                    Console.WriteLine("Ingresa una letra válida.");
+                    Console.WriteLine("Ingresa una letra válida. ");
                     Console.ReadKey();
                     continue;
                 }
