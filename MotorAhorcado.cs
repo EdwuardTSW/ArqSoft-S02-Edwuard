@@ -6,12 +6,14 @@
         private readonly List<char> _letrasUsadas = new();
         private int _intentosRestantes = 6;
         public string PalabraSecreta => _palabraSecreta;
+        public string Categoria { get; }
         public List<char> LetrasUsadas => _letrasUsadas;
         public int IntentosRestantes => _intentosRestantes;
 
-        public MotorAhorcado(IRepositorioPalabras repositorio)
+        public MotorAhorcado(IRepositorioPalabras repositorio, string categoria)
         {
-            _palabraSecreta = repositorio.ObtenerPalabraAleatoria();
+            Categoria = categoria;
+            _palabraSecreta = repositorio.ObtenerPalabraAleatoria(categoria);
         }
 
         public bool LetraYaUsada(char letra) => _letrasUsadas.Contains(letra);

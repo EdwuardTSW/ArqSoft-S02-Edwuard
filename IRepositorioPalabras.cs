@@ -2,6 +2,7 @@
 {
     public interface IRepositorioPalabras
     {
-        string ObtenerPalabraAleatoria();
+        List<string> ObtenerCategorias();
+        string ObtenerPalabraAleatoria(string categoria);
     }
 }

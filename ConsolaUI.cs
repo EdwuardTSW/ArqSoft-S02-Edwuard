@@ -14,6 +14,7 @@
             Console.Clear();
             MostrarAhorcado();
 
+            Console.WriteLine($"Categoria: {_motor.Categoria}");
             Console.WriteLine($"Intentos restantes: {_motor.IntentosRestantes}");
             Console.WriteLine($"Letras usadas: {string.Join(", ", _motor.LetrasUsadas)}");
 
