@@ -3,8 +3,8 @@
     public class MotorViborita : IMotorJuego
     {
         // — Tamaño del tablero —
-        public int Ancho { get; } = 20;
-        public int Alto { get; } = 15;
+        public int Ancho { get; } = 30;
+        public int Alto { get; } = 18;
 
         // — Estado de la víbora —
         private readonly LinkedList<(int x, int y)> _cuerpo = new();
@@ -13,6 +13,8 @@
         private bool _perdido = false;
 
         public int Puntos { get; private set; } = 0;
+        public int PuntosParaGanar { get; } = 10;
+        public int Nivel => Puntos / 3 + 1;
 
         // Propiedades de solo lectura para la UI
         public IEnumerable<(int x, int y)> Cuerpo => _cuerpo;
@@ -88,7 +90,7 @@
             while (_cuerpo.Contains(_comida));
         }
 
-        public bool Ganado() => Puntos >= 10;   // gana al llegar a 10 puntos
+        public bool Ganado() => Puntos >= PuntosParaGanar;   // gana al llegar al objetivo
 
         public bool Perdido() => _perdido;
     }

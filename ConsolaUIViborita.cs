@@ -12,7 +12,7 @@
         public void MostrarTablero()
         {
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine($"=== VIBORITA ===   Puntos: {_motor.Puntos}");
+            Console.WriteLine($"=== VIBORITA ===   Puntos: {_motor.Puntos}/{_motor.PuntosParaGanar}   Nivel: {_motor.Nivel}");
             Console.WriteLine("+" + new string('-', _motor.Ancho) + "+");
 
             for (int y = 0; y < _motor.Alto; y++)
@@ -26,7 +26,7 @@
                     if (_motor.Cuerpo.First() == pos)
                         Console.Write("@");           // cabeza
                     else if (_motor.Cuerpo.Contains(pos))
-                        Console.Write("o");           // cuerpo
+                        Console.Write("O");           // cuerpo
                     else if (_motor.Comida == pos)
                         Console.Write("*");           // comida
                     else
@@ -37,7 +37,7 @@
             }
 
             Console.WriteLine("+" + new string('-', _motor.Ancho) + "+");
-            Console.WriteLine("Flechas: mover   |   Q: salir");
+            Console.WriteLine("Flechas: mover   |   P: pausa   |   Q: salir");
         }
 
         public ConsoleKey LeerTecla()

@@ -9,6 +9,7 @@ if (opcion == "2")
 {
     var motor = new Ahorcado.MotorViborita();
     var ui = new Ahorcado.ConsolaUIViborita(motor);
+    var pausado = false;
 
     Console.CursorVisible = false;
 
@@ -21,18 +22,29 @@ if (opcion == "2")
         if (tecla == ConsoleKey.Q)
             break;
 
+        if (tecla == ConsoleKey.P)
+            pausado = !pausado;
+
+        if (pausado)
+        {
+            ui.MostrarMensaje("Pausado. Presiona P para continuar.");
+            Thread.Sleep(100);
+            continue;
+        }
+
         if (tecla != ConsoleKey.NoName)
             motor.CambiarDireccion(tecla);
 
         motor.Avanzar();
 
-        Thread.Sleep(150);
+        var velocidad = Math.Max(90, 170 - motor.Puntos * 5);
+        Thread.Sleep(velocidad);
     }
 
     ui.MostrarTablero();
 
     ui.MostrarMensaje(motor.Ganado()
-        ? "\n¡Ganaste! Llegaste a 10 puntos."
+        ? $"\n¡Ganaste! Llegaste a {motor.PuntosParaGanar} puntos."
         : "\nGame over.");
 
     Console.CursorVisible = true;
